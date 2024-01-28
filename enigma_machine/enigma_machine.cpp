@@ -13,13 +13,13 @@ char rotor3[26] = { 'B', 'D', 'F', 'H', 'J', 'L', 'C', 'P', 'R', 'T', 'X', 'V', 
 char refl[26] = {'Y', 'R', 'U', 'H', 'Q', 'S', 'L', 'D', 'P', 'X', 'N', 'G', 'O', 'K', 'M', 'I', 'E', 'B', 'F', 'Z', 'C', 'W', 'V', 'J', 'A', 'T'};
 
 
-int rDial_1;
-int rDial_2;
-int rDial_3;
+int rdial_1;
+int rdial_2;
+int rdial_3;
 
-int pDial_1;
-int pDial_2;
-int pDial_3;
+int pRotor1;
+int pRotor2;
+int pRotor3;
 //vars for the rotors (dial)
 
 vector<char> swap_1;
@@ -38,21 +38,30 @@ int fd_index(char in, char arr[26]) {
 
 char mb;
 
+int control_range(int i) {
+    if (i > 25) {
+        i = i - 26;
+    }
+    else if (i < 0) {
+        i = i + 26;
+    }
+    return i;
+};
 
 //assigns index number for plugboard switching
 int main() {
 
     cout << "Enter the number for Dial 1: ";
-    cin >> rDial_1;
-    rDial_1 = rDial_1 - 1;
+    cin >> rdial_1;
+    rdial_1 = rdial_1 - 1;
 
     cout << "Enter the number for Dial 2: ";
-    cin >> rDial_2;
-    rDial_2 = rDial_2 - 1;
+    cin >> rdial_2;
+    rdial_2 = rdial_2 - 1;
 
     cout << "Enter the number for Dial 3: ";
-    cin >> rDial_3;
-    rDial_3 = rDial_3 - 1;
+    cin >> rdial_3;
+    rdial_3 = rdial_3 - 1;
 
 
     while (true) {
@@ -71,7 +80,6 @@ int main() {
     }
 
     int limit = swap_1.size();
-    int r;
     //mainloop
     while (true) {
         cout << "input: ";
@@ -88,26 +96,15 @@ int main() {
             }
         }
 
-        /*
-        mb = rotor#[control_0-25(alph.index[mb] + rdial_#)]
-
-        mb = rotor#[control_0-25(alph.index[mb] + rdial_#)]
-
-        mb = rotor#[control_0-25(alph.index[mb] + rdial_#)]
         
-        mb = refl[rotor3.index[mb] 
+        mb = rotor1[control_range(fd_index(mb, alph) + rdial_1)];
+        mb = rotor2[control_range(fd_index(mb, alph) + rdial_2)];
+        mb = rotor3[control_range(fd_index(mb, alph) + rdial_3)];       
+        mb = refl[fd_index(mb, alph)];       
+        mb = alph[control_range(fd_index(mb, rotor3) - rdial_3)];
+        mb = alph[control_range(fd_index(mb, rotor2) - rdial_2)];
+        mb = alph[control_range(fd_index(mb, rotor1) - rdial_1)];
         
-        mb = alph[control_0-25(rotor#.index[mb] - rdial_#)]
-
-        mb = alph[control_0-25(rotor#.index[mb] - rdial_#)]
-
-        mb = alph[control_0-25(rotor#.index[mb] - rdial_#)]
-        */
-
-
-        
-
-
         for (int i = 0; i < limit; i++) {
             if (mb == swap_1[i]) {
                 mb = swap_2[i];
