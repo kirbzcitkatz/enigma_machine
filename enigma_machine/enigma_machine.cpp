@@ -1,7 +1,6 @@
 //ENIGMA M3 (Kriegsmarine)
 //https://www.cryptomuseum.com/crypto/enigma/wiring.htm
 #include <iostream>
-#include <string>
 #include <vector>
 
 using namespace std;
