@@ -24,6 +24,9 @@ char char_buff;
 int int_buff;
 //plugboard swapping vars
 
+char mb;
+//main buffer
+
 int fd_index(char in, char arr[26]) {
     for (int i = 0; i < 26; i++) {
         if (arr[i] == in) {
@@ -31,8 +34,7 @@ int fd_index(char in, char arr[26]) {
         }
     }
 };
-
-char mb;
+//finds the index of a char from a given array
 
 int control_range(int i) {
     if (i > 25) {
@@ -44,7 +46,6 @@ int control_range(int i) {
     return i;
 };
 
-//assigns index number for plugboard switching
 int main() {
 
     cout << "Enter the number for Dial 1: ";
@@ -89,7 +90,8 @@ int main() {
             else if (mb == swap_2[i]) {
                 mb = swap_1[i];
                 break;
-            }
+            }//if this letter is connected to the plugboard
+             //then it will be swapped with corrisponding letter
         }
 
         
@@ -99,7 +101,7 @@ int main() {
         mb = refl[fd_index(mb, alph)];       
         mb = alph[control_range(fd_index(mb, rotor3) - rdial_3)];
         mb = alph[control_range(fd_index(mb, rotor2) - rdial_2)];
-        mb = alph[control_range(fd_index(mb, rotor1) - rdial_1)];
+        mb = alph[control_range(fd_index(mb, rotor1) - rdial_1)]; //bunch of bull$&!+
         
         for (int i = 0; i < limit; i++) {
             if (mb == swap_1[i]) {
@@ -115,11 +117,12 @@ int main() {
 
         cout << mb << "\n";
 
-    }
+        rdial_1++;
 
-
+        rdial_1 > 25 ? rdial_1 = 0 && rdial_2++ : true;
+        rdial_2 > 25 ? rdial_2 = 0 && rdial_3++ : true;
+        rdial_3 > 25 ? rdial_3 = 0 : true;
+    }   //rotate dials
 
     return 0;
 }
-
-
