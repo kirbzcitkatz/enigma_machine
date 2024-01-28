@@ -16,10 +16,6 @@ char refl[26] = {'Y', 'R', 'U', 'H', 'Q', 'S', 'L', 'D', 'P', 'X', 'N', 'G', 'O'
 int rdial_1;
 int rdial_2;
 int rdial_3;
-
-int pRotor1;
-int pRotor2;
-int pRotor3;
 //vars for the rotors (dial)
 
 vector<char> swap_1;
