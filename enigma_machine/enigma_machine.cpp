@@ -100,7 +100,7 @@ int main() {
         mb = refl[fd_index(mb, alph)];       
         mb = alph[control_range(fd_index(mb, rotor3) - rdial_3)];
         mb = alph[control_range(fd_index(mb, rotor2) - rdial_2)];
-        mb = alph[control_range(fd_index(mb, rotor1) - rdial_1)]; //bunch of bull$&!+ that took way to long
+        mb = alph[control_range(fd_index(mb, rotor1) - rdial_1)]; //bunch of bullshit that took way to long
         
         for (int i = 0; i < limit; i++) {
             if (mb == swap_1[i]) {
